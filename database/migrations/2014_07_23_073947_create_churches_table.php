@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChurchServicesTable extends Migration
+class CreateChurchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateChurchServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('church_services', function (Blueprint $table) {
+        Schema::create('churches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone');
-            $table->string('gender');
             $table->string('location');
-            $table->string('yob');
-            $table->string('seatnumber');
             $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 
@@ -32,6 +29,6 @@ class CreateChurchServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('church_services');
+        Schema::dropIfExists('churches');
     }
 }

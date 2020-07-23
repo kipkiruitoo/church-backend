@@ -15,7 +15,14 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('phone');
+            $table->string('gender');
+            $table->string('location');
+            $table->string('yob');
+            $table->foreignId('church_id')->constrained();
             $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 
